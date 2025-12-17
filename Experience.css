@@ -1,0 +1,835 @@
+:root {
+    /* PETRONAS-inspired colors */
+    --primary-color: #002D3C; /* Dark Blue/Green (The main brand color) */
+    --secondary-color: #FFFFFF; /* Clean White */
+    --accent-color: #00A693; /* Brighter Teal/Green for highlight */
+    --text-color-dark: #333;
+    --text-color-light: #FFFFFF;
+    --max-width: 1100px;
+    --nav-height: 70px;
+}
+
+/* Base Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--secondary-color);
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 1. FLOATING NAVIGATION BAR (HOME & ALL PAGES) --- */
+/* ------------------------------------------------------------------ */
+.floating-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 45, 60, 0.8); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+}
+
+.floating-nav ul {
+    list-style: none;
+    display: flex;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center; 
+    padding: 0 20px;
+}
+
+.floating-nav ul li a {
+    color: var(--text-color-light); 
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-weight: 500;
+    font-size: 0.9em;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.floating-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-out, left 0.3s ease-out;
+}
+
+.floating-nav ul li a:hover::after,
+.floating-nav ul li a.active::after {
+    width: 80%;
+    left: 10%;
+}
+
+.floating-nav ul li a:hover,
+.floating-nav ul li a.active {
+    color: var(--accent-color);
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 3. INNER PAGE GENERAL LAYOUT (ALL INNER PAGES) --- */
+/* ------------------------------------------------------------------ */
+main {
+    padding-top: 60px; 
+    padding-bottom: 60px;
+}
+
+/* Inner Page Header Style */
+.inner-page-header {
+    padding: 100px 0 40px; 
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color); 
+    margin-bottom: 50px;
+}
+
+.inner-page-header h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.inner-page-header p {
+    font-size: 1.1em;
+    color: #666;
+    margin-top: 5px;
+}
+
+h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.section-title-centered {
+    text-align: center;
+    font-size: 2em;
+    color: var(--primary-color);
+    margin: 40px auto 30px auto;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+    display: block;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 6. EDUCATION TIMELINE LAYOUT --- */
+/* ------------------------------------------------------------------ */
+.timeline-section {
+    padding: 20px 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* The main vertical line */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #ddd;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    margin-bottom: 50px; 
+}
+/* Positioning for items (Left/Right) */
+.timeline-item:nth-child(even) { left: 50%; padding-left: 60px; padding-right: 10px; }
+.timeline-item:nth-child(even) .timeline-dot { left: -7px; }
+.timeline-item:nth-child(odd) { left: 0; padding-right: 60px; padding-left: 10px; }
+.timeline-item:nth-child(odd) .timeline-dot { right: -7px; }
+
+.timeline-dot {
+    height: 14px; width: 14px;
+    background-color: var(--accent-color);
+    position: absolute; border-radius: 50%;
+    z-index: 1; border: 3px solid var(--secondary-color);
+}
+.timeline-content {
+    padding: 20px; background-color: #fff;
+    border-radius: 6px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border-top: 3px solid var(--primary-color);
+}
+
+/* Split Content Styles for Education */
+.timeline-card-split { display: flex; gap: 15px; }
+.card-left-content { flex: 2; }
+.card-image-container-right { 
+    flex: 1; text-align: center; border-left: 1px solid #eee;
+    padding-left: 10px; display: flex; flex-direction: column;
+    justify-content: flex-start; align-items: center;
+}
+.timeline-card-logo {
+    width: 100%; max-width: 100px; height: auto;
+    border-radius: 4px; border: 2px solid var(--accent-color);
+    margin-bottom: 5px;
+}
+/* Education List Styles */
+.timeline-content ul { list-style: none; padding-left: 0; margin-top: 10px; font-size: 0.9em; }
+.timeline-content ul li { margin-bottom: 5px; padding-left: 15px; position: relative; }
+.timeline-content ul li::before {
+    content: "•"; color: var(--accent-color);
+    font-weight: bold; display: inline-block; width: 1em; margin-left: -1em;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* --- 6B. EXPERIENCE PAGE LAYOUT (Dashboard Grid - NEW DESIGN) --- */
+/* ------------------------------------------------------------------ */
+
+.experience-dashboard-section {
+    padding: 20px 0;
+}
+
+/* Base Grid: Two columns, with the first column being wider */
+.dashboard-grid {
+    display: grid;
+    /* First column is 60% wide, second column is 40% wide */
+    grid-template-columns: 3fr 2fr; 
+    gap: 25px;
+    max-width: var(--max-width);
+    margin: 40px auto; 
+}
+
+/* ** RULE TO CENTER THE COLLEGE GAMES BLOCK ** */
+.experience-block.block-centered-item {
+    /* Forces the item to span both columns (1 and 2), effectively centering it */
+    grid-column: 1 / span 2; 
+}
+/* ** END NEW RULE ** */
+
+
+/* Style for the individual experience card/block */
+.experience-block {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px; /* Re-added padding for simple design */
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--accent-color); 
+    overflow: hidden; 
+}
+
+.experience-block:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 25px rgba(0, 45, 60, 0.15); 
+}
+
+/* Special styling for the Major block (The Internship/Primary role) */
+.experience-block.block-major {
+    grid-column: 1 / span 2; 
+    border-left: 8px solid var(--primary-color);
+    background-color: #f7f9fa; 
+}
+
+/* --- POLAROID PHOTO STYLING --- */
+.polaroid-photo-container {
+    width: 150px; /* Overall width of the Polaroid frame */
+    background-color: var(--secondary-color); /* White frame */
+    padding: 8px 8px 35px 8px; /* Thick bottom border for caption area */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 0 0 15px 15px; /* Margin for space around text */
+    transition: transform 0.3s ease;
+    text-align: center;
+    line-height: 1.2;
+    /* Rotation for the vintage look */
+    transform: rotate(2deg); 
+    z-index: 2; /* Ensure it overlaps text if needed */
+}
+
+.polaroid-photo-container:hover {
+    transform: rotate(0deg) scale(1.05); /* Straighten and slightly enlarge on hover */
+}
+
+.polaroid-photo-container.float-right {
+    float: right;
+    margin: 0 0 15px 25px;
+    transform: rotate(2deg); 
+}
+
+.polaroid-photo-container.float-left {
+    float: left;
+    margin: 0 25px 15px 0;
+    transform: rotate(-3deg); /* Slightly opposite rotation */
+}
+
+.polaroid-photo {
+    width: 100%;
+    height: 120px; /* Fixed height for the photo itself */
+    object-fit: cover; /* This makes the photo fill the image area */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.polaroid-caption {
+    font-size: 0.8em;
+    font-style: italic;
+    color: #666;
+    margin-top: 5px;
+    padding-bottom: 3px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Header/Titles & Content Padding */
+.block-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.block-content {
+    /* Clear the float so the list starts below the photo if it gets too long */
+    overflow: auto; 
+}
+
+
+.job-title {
+    font-size: 1.5em;
+    color: var(--primary-color); 
+    margin-bottom: 3px;
+}
+
+.company {
+    font-weight: 600;
+    color: var(--accent-color); 
+    margin-bottom: 5px;
+}
+
+.date-range {
+    font-size: 0.9em;
+    color: #888;
+    font-style: italic;
+}
+
+/* List of duties/responsibilities */
+.duties-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.95em;
+    padding-top: 5px;
+}
+
+.duties-list li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+/* Custom bullet point styling (Arrow/Checkmark) */
+.duties-list li::before {
+    content: "✓"; 
+    color: var(--accent-color); 
+    font-weight: bold;
+    position: absolute; 
+    left: 0; 
+    top: 0;
+}
+
+/* Floating Tags (Positioned relative to the block) */
+.block-tag {
+    position: absolute;
+    top: 25px; 
+    right: 25px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10; 
+}
+
+.tag-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.tag-secondary {
+    background-color: #e6f7f5;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+
+/* ------------------------------------------------------------------ */
+/* --- 6C. FRIENDS PAGE LAYOUT (3-Column Hover Gallery) --- */
+/* ------------------------------------------------------------------ */
+
+.friends-section {
+    padding: 30px 0;
+}
+
+/* 3-Column Grid Layout (Desktop) */
+.friends-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    max-width: var(--max-width);
+    margin: 40px auto; 
+}
+
+.friend-gallery-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    /* Fixed aspect ratio for consistent look */
+    height: 350px; 
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Overlay for Text */
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%; /* Covers the entire card */
+    background-color: rgba(0, 45, 60, 0.85); /* Semi-transparent dark overlay */
+    color: var(--text-color-light);
+    padding: 20px;
+    
+    /* Center the content vertically/horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align content to the bottom initially */
+
+    /* Animation: Start completely invisible and off-screen */
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* HOVER EFFECT */
+.friend-gallery-card:hover .gallery-overlay {
+    opacity: 1;
+    transform: translateY(0); /* Slides up to fill the card */
+}
+
+.friend-gallery-card:hover .gallery-image {
+    transform: scale(1.05); /* Slight zoom effect on image */
+}
+
+.gallery-name {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--accent-color);
+}
+
+.gallery-role {
+    font-size: 1.1em;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.gallery-bio {
+    font-size: 0.9em;
+    margin-top: 10px;
+    line-height: 1.4;
+    max-height: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* --- 6D. FAVOURITES PAGE LAYOUT (Accordion/Collapsible) --- */
+/* ------------------------------------------------------------------ */
+
+.favourites-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 10px;
+}
+
+.accordion-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-header {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion-header:hover {
+    background-color: #f0f3f5;
+}
+
+/* Style for the active (expanded) header */
+.accordion-header[aria-expanded="true"] {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.accordion-header[aria-expanded="true"] .header-icon {
+    transform: rotate(15deg);
+}
+
+/* Icon for header */
+.header-icon {
+    font-size: 1.4em;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Chevron/Indicator Icon */
+.chevron {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.accordion-header[aria-expanded="true"] .chevron {
+    border-right-color: var(--text-color-light);
+    border-bottom-color: var(--text-color-light);
+    transform: rotate(225deg); /* Points up when open */
+}
+
+/* Content Area - ABSOLUTE FIX */
+.accordion-content {
+    background-color: #fff;
+    max-height: 0; /* Managed by JS, but kept for default state */
+    overflow: hidden; 
+    /* The Fix: Match JS transition timing */
+    transition: max-height 0.4s ease-out, visibility 0.4s;
+    visibility: hidden; /* Initial state set by JS/CSS */
+}
+
+/* Styling for list content */
+.favourite-list {
+    list-style: none;
+    padding: 20px 30px;
+    margin: 0;
+}
+
+.favourite-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 1em;
+    color: var(--text-color-dark);
+}
+
+/* Custom list marker (accent color dot) */
+.favourite-list li::before {
+    content: "•";
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+
+/* Styling for embedded media (Video/Spotify) */
+.media-content {
+    padding: 20px 30px;
+    background-color: #f8f8f8; /* Light gray background for media */
+}
+
+.media-title {
+    font-size: 1.3em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.media-description {
+    font-size: 0.95em;
+    color: #666;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+}
+
+/* Responsive YouTube/Video Container (16:9 aspect ratio) */
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* --- 6E. GALLERY PAGE LAYOUT (Masonry Grid - Unique Design) --- */
+/* ------------------------------------------------------------------ */
+
+.gallery-section {
+    padding: 30px 0;
+}
+
+/* Base Grid Setup for Masonry Effect */
+.masonry-grid {
+    display: grid;
+    /* Create 3 columns of equal width */
+    grid-template-columns: repeat(3, 1fr); 
+    /* Set the gaps between items */
+    gap: 15px;
+    max-width: var(--max-width);
+    margin: 40px auto; 
+    /* Enable auto-row sizing to allow items to span multiple rows */
+    grid-auto-rows: minmax(150px, auto); /* Base row height for spacing */
+}
+
+/* Individual Item Sizing for Masonry Look */
+/* Small/Standard Item: Spans 2 row units */
+.gallery-item.item-sm {
+    grid-row: span 2; 
+}
+
+/* Large Item: Spans 3 row units (Taller appearance) */
+.gallery-item.item-lg {
+    grid-row: span 3;
+}
+
+/* Wide Item: Spans 2 columns (Horizontal appearance) */
+.gallery-item.item-wide {
+    grid-column: span 2;
+    grid-row: span 2; /* Also give it some vertical space */
+}
+
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(0, 45, 60, 0.2);
+    border: 3px solid var(--accent-color); /* Add accent border on hover */
+}
+
+.gallery-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover .gallery-photo {
+    transform: scale(1.05); /* Subtle zoom effect */
+}
+
+/* Caption Overlay */
+.photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0, 45, 60, 0.9)); /* Gradient fade */
+    color: var(--text-color-light);
+    padding: 15px 10px 10px;
+    text-align: center;
+    font-size: 0.95em;
+    font-weight: 500;
+    
+    /* Animation: Initially off-screen */
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.gallery-item:hover .photo-caption {
+    transform: translateY(0); /* Slides up from the bottom */
+    opacity: 1;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 7. NAVIGATION, FOOTER, & GLOBAL STYLES (Page Nav/Footer) --- */
+/* ------------------------------------------------------------------ */
+
+.page-navigation {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.next-btn, .prev-btn {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.next-btn { border: 1px solid var(--primary-color); border-radius: 4px; }
+.next-btn:hover { background-color: var(--primary-color); color: var(--text-color-light); }
+.prev-btn:hover { color: var(--accent-color); }
+
+footer {
+    text-align: center; padding: 20px 0; margin-top: 20px;
+    border-top: 1px solid #ddd; color: #777; font-size: 0.9em;
+}
+.socials { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 10px; /* Space above socials */
+}
+footer .socials img { 
+    width: 24px; 
+    height: 24px; 
+    margin: 0 8px; 
+    transition: transform 0.2s ease; 
+}
+footer .socials img:hover { transform: scale(1.1); }
+
+
+/* ------------------------------------------------------------------ */
+/* --- 8. MEDIA QUERIES (RESPONSIVENESS) --- */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 992px) {
+    
+    /* Experience Grid Adjustment (Dashboard stacks columns) */
+    .dashboard-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+    .experience-block.block-major,
+    .experience-block.block-centered-item {
+        grid-column: 1 / span 1; 
+    }
+    .block-tag {
+        position: absolute; 
+        top: 25px; 
+        right: 25px;
+    }
+    
+    /* Friends Grid Adjustment (3 -> 2 columns) */
+    .friends-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+    }
+
+    /* Adjust height for tablet gallery cards */
+    .friend-gallery-card {
+        height: 300px; 
+    }
+    
+    /* Timeline adjustments here... */
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .timeline-item:nth-child(even), .timeline-item:nth-child(odd) { left: 0; }
+    .timeline-item:nth-child(odd) .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 24px; right: auto; }
+
+    /* Split Content Stack */
+    .timeline-card-split { flex-direction: column; }
+    .card-image-container-right { border-left: none; border-top: 1px solid #eee; padding-left: 0; padding-top: 10px; }
+    
+    /* Gallery Media Query 1: Tablet (2 columns) */
+    .masonry-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px;
+        grid-auto-rows: minmax(120px, auto); 
+    }
+    .gallery-item.item-wide {
+        grid-column: span 2;
+        grid-row: span 2; 
+    }
+    .gallery-item.item-lg {
+        grid-row: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    
+    /* Experience Photo Adjustments for Mobile */
+    .polaroid-photo-container {
+        width: 100%;
+        margin: 0 0 15px 0;
+        /* Remove float and rotation on mobile */
+        float: none !important;
+        transform: none !important;
+    }
+    .polaroid-photo {
+        height: 150px; 
+    }
+
+    /* Friends Grid Adjustment (2 -> 1 column) */
+    .friends-grid {
+        grid-template-columns: 1fr; 
+        max-width: 90%;

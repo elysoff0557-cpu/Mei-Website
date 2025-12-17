@@ -1,0 +1,724 @@
+:root {
+    /* PETRONAS-inspired colors */
+    --primary-color: #002D3C; /* Dark Blue/Green (The main brand color) */
+    --secondary-color: #FFFFFF; /* Clean White */
+    --accent-color: #00A693; /* Brighter Teal/Green for highlight */
+    --text-color-dark: #333;
+    --text-color-light: #FFFFFF;
+    --max-width: 1100px;
+    --nav-height: 70px;
+}
+
+/* Base Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--secondary-color);
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 1. FLOATING NAVIGATION BAR (HOME & ALL PAGES) --- */
+/* ------------------------------------------------------------------ */
+.floating-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 45, 60, 0.8); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+}
+
+.floating-nav.scrolled {
+    background-color: var(--primary-color); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.floating-nav ul {
+    list-style: none;
+    display: flex;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center; 
+    padding: 0 20px;
+}
+
+.floating-nav ul li a {
+    color: var(--text-color-light); 
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-weight: 500;
+    font-size: 0.9em;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.floating-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-out, left 0.3s ease-out;
+}
+
+.floating-nav ul li a:hover::after,
+.floating-nav ul li a.active::after {
+    width: 80%;
+    left: 10%;
+}
+
+.floating-nav ul li a:hover,
+.floating-nav ul li a.active {
+    color: var(--accent-color);
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 2. HOME PAGE (HERO SECTION) --- */
+/* ------------------------------------------------------------------ */
+.hero-section {
+    position: relative;
+    height: 80vh; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color-light); 
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('your-sleek-city-tech-image.jpg'); 
+    background-color: var(--primary-color); 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    filter: brightness(0.65) saturate(1.1); 
+    z-index: -1;
+}
+
+.hero-header {
+    z-index: 10;
+    padding-top: var(--nav-height); 
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero-header h1 {
+    font-size: 4em; 
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-color-light); 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-header .tagline {
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 3. INNER PAGE GENERAL LAYOUT (ALL INNER PAGES) --- */
+/* ------------------------------------------------------------------ */
+main {
+    padding-top: 60px; 
+    padding-bottom: 60px;
+}
+
+/* Inner Page Header Style */
+.inner-page-header {
+    padding: 100px 0 40px; 
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color); 
+    margin-bottom: 50px;
+}
+
+.inner-page-header h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.inner-page-header p {
+    font-size: 1.1em;
+    color: #666;
+    margin-top: 5px;
+}
+
+h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 4. ABOUT ME LAYOUT (SPECIFIC STYLES) --- */
+/* ------------------------------------------------------------------ */
+.profile-section {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start; 
+    margin-bottom: 60px;
+    padding: 30px; 
+    background-color: #f8f8f8; 
+    border-radius: 8px;
+}
+
+.profile-photo-placeholder {
+    min-width: 200px;
+    height: 200px;
+    background-color: var(--primary-color);
+    border-radius: 50%; 
+    border: 5px solid var(--accent-color); 
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.profile-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.bio-text h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-left: 4px solid var(--accent-color); 
+    padding-left: 15px;
+}
+
+.bio-text p {
+    margin-bottom: 15px; 
+}
+
+.skills-section {
+    padding-top: 40px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.skills-section h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: left;
+}
+
+.skill-card {
+    background-color: var(--secondary-color);
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 45, 60, 0.1);
+}
+
+.skill-card h4 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.25em;
+    border-bottom: 1px dashed var(--accent-color);
+    padding-bottom: 5px;
+}
+
+.skill-card ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.95em;
+    color: var(--text-color-dark);
+}
+
+.skill-card ul li {
+    margin-bottom: 8px;
+}
+
+/* Visual Gallery */
+.visual-gallery {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 40px;
+}
+
+.image-showcase {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.showcase-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.showcase-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.showcase-item .caption {
+    padding: 10px;
+    font-size: 0.9em;
+    color: #555;
+    background-color: #f5f5f5;
+    border-top: 1px solid #eee;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 5. FAMILY LAYOUT (BANNER + 2, 2, 1 GRID) --- */
+/* ------------------------------------------------------------------ */
+.parents-banner-section {
+    padding: 0 0 40px 0;
+}
+
+.parents-banner {
+    position: relative;
+    height: 250px; 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.parents-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    filter: brightness(0.6); 
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: var(--text-color-light);
+}
+
+.banner-overlay h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.banner-overlay p {
+    font-size: 1.1em;
+    max-width: 80%;
+}
+
+.family-gallery-section {
+    padding: 30px 0;
+}
+
+.family-gallery-section h3 {
+    text-align: center;
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.siblings-grid {
+    /* Set grid to 2 columns consistently for desktop */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px; 
+    margin-top: 20px;
+}
+
+.family-card {
+    background-color: #f8f8f8;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+    border-top: 3px solid var(--accent-color);
+}
+
+/* Target the final single card to span both columns and center itself */
+.sibling-centered-single {
+    grid-column: 1 / -1; /* Span across both columns */
+    width: 50%; /* Make the card itself take up half the width */
+    justify-self: center; /* Center the card horizontally */
+}
+
+.family-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 45, 60, 0.1);
+}
+
+.family-photo-container {
+    width: 150px; 
+    height: 150px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+}
+
+.family-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.family-card h4 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-bottom: 3px;
+}
+
+.family-card .role {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* --- 6. EDUCATION TIMELINE LAYOUT --- */
+/* ------------------------------------------------------------------ */
+.timeline-section {
+    padding: 20px 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* The main vertical line */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #ddd;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    margin-bottom: 50px; 
+}
+
+/* The accent color dots on the line */
+.timeline-dot {
+    height: 14px;
+    width: 14px;
+    background-color: var(--accent-color);
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+    border: 3px solid var(--secondary-color);
+}
+
+/* Positioning for items on the right side of the line (Even numbered items) */
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 60px;
+    padding-right: 10px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -7px;
+}
+
+/* Positioning for items on the left side of the line (Odd numbered items) */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 60px;
+    padding-left: 10px;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -7px;
+}
+
+.timeline-content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border-top: 3px solid var(--primary-color);
+}
+
+.timeline-date {
+    font-size: 0.85em;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.timeline-content h3 {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.timeline-content h4 {
+    font-size: 1.1em;
+    color: #555;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.timeline-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.timeline-content ul li {
+    margin-bottom: 5px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.timeline-content ul li::before {
+    content: "•";
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 7. NAVIGATION, FOOTER, & GLOBAL STYLES --- */
+/* ------------------------------------------------------------------ */
+
+/* Page Navigation Buttons */
+.page-navigation {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.next-btn, .prev-btn {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.next-btn {
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+.next-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.prev-btn:hover {
+    color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    color: #777;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials a {
+    display: inline-block;
+}
+
+/* --- Social Icons Size Adjustment (30px) --- */
+footer .socials img {
+    width: 24px; 
+    height: 24px;
+    margin: 0 8px; /* Slightly increased spacing */
+    transition: transform 0.2s ease;
+}
+
+footer .socials img:hover {
+    transform: scale(1.1);
+}
+
+/* ------------------------------------------------------------------ */
+/* --- 8. MEDIA QUERIES (RESPONSIVENESS) --- */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 992px) {
+    /* Adjust navigation for smaller screens */
+    .floating-nav ul {
+        flex-wrap: wrap;
+        padding: 0 10px;
+    }
+    
+    .floating-nav ul li a {
+        padding: 8px 10px;
+        font-size: 0.85em;
+    }
+    
+    /* About Me Adjustments */
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Timeline Adjustments */
+    .timeline::after {
+        left: 31px; /* Move line to the left */
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px; /* Space for the dot and line */
+        padding-right: 25px;
+    }
+    
+    .timeline-item:nth-child(even),
+    .timeline-item:nth-child(odd) {
+        left: 0;
+    }
+
+    /* Move dot for all items to the left */
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 24px;
+        right: auto;
+    }
+
+    .sibling-centered-single {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .inner-page-header {
+        padding-top: 80px;
+    }
+    
+    .inner-page-header h2 {
+        font-size: 2em;
+    }
+    
+    .floating-nav ul {
+        flex-direction: column; /* Stack nav items */
+        align-items: center;
+    }
+    
+    .floating-nav {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .floating-nav ul li a {
+        padding: 5px 10px;
+    }
+
+    /* About Me */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Family */
+    .siblings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Navigation at the bottom */
+    .page-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .next-btn, .prev-btn {
+        text-align: center;
+    }
+}
